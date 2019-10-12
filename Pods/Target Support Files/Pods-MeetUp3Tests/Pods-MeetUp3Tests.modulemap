@@ -1,0 +1,6 @@
+framework module Pods_MeetUp3Tests {
+  umbrella header "Pods-MeetUp3Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
