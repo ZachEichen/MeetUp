@@ -185,7 +185,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Meet Up" image="person.3.fill" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="myTableView" destination="hxn-Ev-tTN" id="bTQ-t2-Uwb"/>
+                        <outlet property="myTableView" destination="hxn-Ev-tTN" id="7Md-f7-Jgq"/>
                         <outlet property="timeLabel" destination="7wU-vh-lBS" id="lah-ds-Ewl"/>
                         <outlet property="timeSlider" destination="aw8-LZ-f0M" id="Ive-me-5eh"/>
                     </connections>

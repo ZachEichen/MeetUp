@@ -15,21 +15,17 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var myTableView: UITableView!
     
-    var checkTime = 0000
-    var friendsAvailable: [String] = []
+    var hour = 00
+    var minute = 00
+    var friendsAvailable: [String] = ["test 1", "test 2"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myTableView.delegate = self
+        myTableView.dataSource = self
         
-        // Set checkTime
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        checkTime = 100*hour + minutes
-        timeLabel.text = "Friends Available Now"    
-        
-        friendsAvailable = []
+        timeLabel.text = "Friends Available Now"
+        friendsAvailable = data.friendsAvailableAtTime(deltaHours: hour, deltaMinutes: minute)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,14 +56,13 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             timeLabel.text = String(format: "Friends Available in %2ih %2imin", hours(time: t), minutes(time: t))
         }
-        
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = hours(time: t) + calendar.component(.hour, from: date)
-        let minute = minutes(time: t) + calendar.component(.minute, from: date)
-
-        checkTime = 100*hour + minute
+        hour = hours(time: t)
+        minute = minutes(time: t)
+        friendsAvailable = data.friendsAvailableAtTime(deltaHours: hour, deltaMinutes: minute)
+        print(friendsAvailable)
+        myTableView.reloadData()
     }
+    
     
     @IBAction func timeSliderReleased(_ sender: Any) {
         // Update friendsAvailable

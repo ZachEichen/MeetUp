@@ -21,10 +21,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         friendRequestTable.dataSource = self
         myFriendsTable.delegate = self
         myFriendsTable.dataSource = self
-        
-        print("begining wait")
-        print("ending wait")
-        data.checkVals()
         }
 
     func fetchData() {

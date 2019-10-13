@@ -55,6 +55,7 @@ class myDatabase{
                 self.sleepEnd = myDict["sleep_end"] as! Int
                 self.friendRequests = myDict["friend_requested_by"] as! [String]
                 self.friends = myDict["friends"] as! [String]
+                self.populateFriends();
                 completion?()
 
                 print(self.friends)
@@ -124,17 +125,45 @@ class myDatabase{
         return true;
     }
     
-    func friendsAvailableAtTime(time: Int) -> [String] {
-        var ppl: [String] = []
-        for (key, dict) in PeopleDict {
-            
+    func friendsAvailableAtTime(deltaHours : Int, deltaMinutes : Int) -> [String] {
+        // get curr time, and make day string and mil time number
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let year = 2019 //todo: please make this less sketch
+        let month = calendar.component(.month, from: date) // todo: make months wrap
+        var day = calendar.component(.day, from: date)
+        var hour =   calendar.component(.hour, from: date) + deltaHours
+        var minute = calendar.component(.minute, from: date) + deltaMinutes
+        // take care of that annoying thing called wrapping
+        if minute >= 60 {
+            minute = (minute - 60)
+            hour = (hour + 1)
         }
+        if (hour >= 24) {
+            hour = (hour - 24)
+            day = (day + 1)
+        }
+        let dateString = String(format: "%02d_%02d_%04d",day,month,year) // generate time String
+        // generate military time
+        let milTime = hour * 100 + minute;
+        
+        var ppl: [String] = []
+        for friend in myFriends {
+            if( friend.isFreeAt(date: dateString, time: milTime)){
+                ppl.append(friend.getName())
+            }
+        }
+        return ppl
     }
     
     func populateFriends() ->Void{
         for name in  friends {
-            let timeFree = PeopleDict ["free_hours"] as! NSDictionary
-            let meTime = PeopleDict["me_time"] as! Bool
+            if (name == "_") { continue; }
+            if (name == username){ continue; }
+            print(name)
+            let timeFree = (PeopleDict[name] as!NSDictionary )["free_hours"] as! NSDictionary
+            let meTime = (PeopleDict[name] as! NSDictionary )["me_time"] as! Bool
             myFriends.append(Friend(Name: name, TimeFree: timeFree, meTime: meTime))
         }
     }
