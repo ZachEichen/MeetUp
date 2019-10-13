@@ -11,7 +11,7 @@ import CoreData
 import Firebase
 
 // globals (AAH Yeah i know theyre bad Mr my professor)
-var data : myDatabase!
+var data = myDatabase()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
-        data = myDatabase();
-        data.fetchAndPrint();
         return true
     }
 

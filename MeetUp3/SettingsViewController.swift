@@ -11,23 +11,33 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var meTimeSwitch: UISwitch!
+    @IBOutlet weak var fromTime: UIDatePicker!
+    @IBOutlet weak var toTime: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //usernameTextField.attributedText = data.username
+        usernameTextField.text = data.username
+        meTimeSwitch.isOn = data.meTime
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "HHmm"
+
+        let date = dateFormatter.date(from: String(format: "%04d", data.sleepStart))
+        fromTime.date = date!
+        
+        let date2 = dateFormatter.date(from: String(format: "%04d", data.sleepEnd))
+        toTime.date = date2!
+
+
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidDisappear(_ animated: Bool) {
+        super .viewDidDisappear(animated)
+        
+        
     }
-    */
-
 }

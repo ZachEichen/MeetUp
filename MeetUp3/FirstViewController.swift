@@ -13,22 +13,26 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var friendRequestTable: UITableView!
     @IBOutlet weak var myFriendsTable: UITableView!
     
-    let myFriends = ["Nicky Eichen", "Zachary Eichen", "Joey Wong"]
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        data.fetchAndPrint(completion: {
+            self.friendRequestTable.reloadData()
+            self.myFriendsTable.reloadData()
+        })
         friendRequestTable.delegate = self
         friendRequestTable.dataSource = self
         myFriendsTable.delegate = self
         myFriendsTable.dataSource = self
         
-        data.fetchAndPrint()
-        
-    }
+        print("begining wait")
+        print("ending wait")
+        data.checkVals()
+        }
 
     @IBAction func inviteButtonPressed(_ sender: Any) {
         let userID = UIDevice.current.identifierForVendor!.uuidString
         print(userID)
+        data.checkVals()
     }
     
     @IBAction func InviteButtonPressed(_ sender: Any) {
@@ -39,9 +43,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (tableView == myFriendsTable) {
-            return myFriends.count
+            return data.friends.count
         } else if (tableView == friendRequestTable) {
-            return 2
+            return data.friendRequests.count
         } else {
             print("Uh Oh. How did anther table get in?")
             return 0
@@ -52,12 +56,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if (tableView == myFriendsTable) {
             print("configuring pending requests")
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell2", for: indexPath)
-            cell.textLabel!.text = myFriends[indexPath.row]
+            cell.textLabel!.text = data.friends[indexPath.row]
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell2", for: indexPath)
-            cell.textLabel!.text = myFriends[indexPath.row]
+            cell.textLabel!.text = data.friendRequests[indexPath.row]
             return cell
             
         }
