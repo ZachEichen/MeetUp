@@ -11,6 +11,8 @@
 		B6AC92DB2352465300C9DF09 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6AC92DA2352465300C9DF09 /* GoogleService-Info.plist */; };
 		B6AC92DD2352561D00C9DF09 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC92DC2352561D00C9DF09 /* Database.swift */; };
 		B6AC92DF23526E8700C9DF09 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC92DE23526E8700C9DF09 /* SettingsViewController.swift */; };
+		B6AC92E32352C13800C9DF09 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC92E22352C13800C9DF09 /* Friend.swift */; };
+		B6AC92E52352C14500C9DF09 /* MeetUpPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC92E42352C14500C9DF09 /* MeetUpPlanner.swift */; };
 		B6CF0C4E2352243D00CA88E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CF0C4D2352243D00CA88E5 /* AppDelegate.swift */; };
 		B6CF0C502352243D00CA88E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CF0C4F2352243D00CA88E5 /* SceneDelegate.swift */; };
 		B6CF0C522352243D00CA88E5 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CF0C512352243D00CA88E5 /* FirstViewController.swift */; };
@@ -42,6 +44,8 @@
 		B6AC92DA2352465300C9DF09 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6AC92DC2352561D00C9DF09 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		B6AC92DE23526E8700C9DF09 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B6AC92E22352C13800C9DF09 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		B6AC92E42352C14500C9DF09 /* MeetUpPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetUpPlanner.swift; sourceTree = "<group>"; };
 		B6CF0C4A2352243D00CA88E5 /* MeetUp3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetUp3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CF0C4D2352243D00CA88E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6CF0C4F2352243D00CA88E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				B6AC92DE23526E8700C9DF09 /* SettingsViewController.swift */,
 				B6CF0C552352243D00CA88E5 /* Main.storyboard */,
 				B6AC92DC2352561D00C9DF09 /* Database.swift */,
+				B6AC92E22352C13800C9DF09 /* Friend.swift */,
+				B6AC92E42352C14500C9DF09 /* MeetUpPlanner.swift */,
 				B6CF0C5B2352243E00CA88E5 /* Assets.xcassets */,
 				B6CF0C5D2352243E00CA88E5 /* LaunchScreen.storyboard */,
 				B6AC92DA2352465300C9DF09 /* GoogleService-Info.plist */,
@@ -318,10 +324,12 @@
 				B6AC92DD2352561D00C9DF09 /* Database.swift in Sources */,
 				B6CF0C542352243D00CA88E5 /* SecondViewController.swift in Sources */,
 				B6AC92DF23526E8700C9DF09 /* SettingsViewController.swift in Sources */,
+				B6AC92E52352C14500C9DF09 /* MeetUpPlanner.swift in Sources */,
 				B6CF0C522352243D00CA88E5 /* FirstViewController.swift in Sources */,
 				B6CF0C4E2352243D00CA88E5 /* AppDelegate.swift in Sources */,
 				B6CF0C502352243D00CA88E5 /* SceneDelegate.swift in Sources */,
 				B6CF0C5A2352243D00CA88E5 /* MeetUp3.xcdatamodeld in Sources */,
+				B6AC92E32352C13800C9DF09 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
