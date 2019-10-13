@@ -28,7 +28,7 @@ class Friend{
         
         let timesArr = timeFree[date] as? NSDictionary
         // if the date is not listed, the person is not free
-        if(timesArr == nil) {return false;}
+        if(timesArr == nil) {return true;}
         // if the date is listed, check if the time is in a "free range"
         for (str, arr) in timesArr as! NSDictionary {
             // parse start and end times for the free times
@@ -40,10 +40,10 @@ class Friend{
             print (end);
             // check if the time checked is in the range given
             if(start! <= time && end! >= time) {
-                return true;
+                return false;
             }
         }
       // if no correct values have been seen, return false;
-        return false;
+        return true;
     }
 }

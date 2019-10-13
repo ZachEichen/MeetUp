@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		96EBC4791A69D3B37135C998 /* Pods_MeetUp3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54249DAFD4B05423CB047932 /* Pods_MeetUp3.framework */; };
+		B61B364723535DDB00A7EF7D /* CalendarReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B364623535DDB00A7EF7D /* CalendarReader.swift */; };
 		B6AC92DB2352465300C9DF09 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6AC92DA2352465300C9DF09 /* GoogleService-Info.plist */; };
 		B6AC92DD2352561D00C9DF09 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC92DC2352561D00C9DF09 /* Database.swift */; };
 		B6AC92DF23526E8700C9DF09 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC92DE23526E8700C9DF09 /* SettingsViewController.swift */; };
@@ -40,6 +41,7 @@
 		54249DAFD4B05423CB047932 /* Pods_MeetUp3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetUp3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69D1EC89FF9A3E471DA6016A /* Pods-MeetUp3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetUp3Tests.release.xcconfig"; path = "Target Support Files/Pods-MeetUp3Tests/Pods-MeetUp3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A9615553A93D38D2190C2EF7 /* Pods-MeetUp3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetUp3Tests.debug.xcconfig"; path = "Target Support Files/Pods-MeetUp3Tests/Pods-MeetUp3Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B61B364623535DDB00A7EF7D /* CalendarReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarReader.swift; sourceTree = "<group>"; };
 		B6AC92DA2352465300C9DF09 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6AC92DC2352561D00C9DF09 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		B6AC92DE23526E8700C9DF09 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				B6CF0C4D2352243D00CA88E5 /* AppDelegate.swift */,
 				B6CF0C4F2352243D00CA88E5 /* SceneDelegate.swift */,
+				B61B364623535DDB00A7EF7D /* CalendarReader.swift */,
 				B6CF0C512352243D00CA88E5 /* FirstViewController.swift */,
 				B6CF0C532352243D00CA88E5 /* SecondViewController.swift */,
 				B6AC92DE23526E8700C9DF09 /* SettingsViewController.swift */,
@@ -325,6 +328,7 @@
 				B6CF0C4E2352243D00CA88E5 /* AppDelegate.swift in Sources */,
 				B6CF0C502352243D00CA88E5 /* SceneDelegate.swift in Sources */,
 				B6CF0C5A2352243D00CA88E5 /* MeetUp3.xcdatamodeld in Sources */,
+				B61B364723535DDB00A7EF7D /* CalendarReader.swift in Sources */,
 				B6AC92E32352C13800C9DF09 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

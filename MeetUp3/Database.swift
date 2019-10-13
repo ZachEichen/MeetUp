@@ -175,6 +175,7 @@ class myDatabase{
     }
     
     func populateFriends() ->Void{
+        myFriends = []
         for name in  friends {
             if (name == "_") { continue; }
             if (name == username){ continue; }
