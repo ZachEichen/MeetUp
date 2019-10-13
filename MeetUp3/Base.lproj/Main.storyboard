@@ -112,6 +112,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="person" catalog="system" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="friendInvite" destination="NIn-59-hs8" id="Ftg-bE-Rzh"/>
                         <outlet property="friendRequestTable" destination="5qf-KC-TT5" id="tN1-Si-eNA"/>
                         <outlet property="myFriendsTable" destination="Sqe-Pd-dca" id="Adw-Qu-ixc"/>
                     </connections>
@@ -154,7 +155,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="22.989999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="aw8-LZ-f0M">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="23.989999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="aw8-LZ-f0M">
                                 <rect key="frame" x="38" y="491.5" width="338" height="31"/>
                                 <color key="minimumTrackTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

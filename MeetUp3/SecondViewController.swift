@@ -27,6 +27,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
         checkTime = 100*hour + minutes
+        timeLabel.text = "Friends Available Now"    
         
         friendsAvailable = []
     }

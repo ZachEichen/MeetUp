@@ -13,7 +13,7 @@ class myDatabase{
     var ref: DatabaseReference!
     //var lastRead: String = "";
     var IdDict : NSDictionary! ;
-    var FriendDict : NSDictionary! ;
+    var PeopleDict : NSDictionary! ;
 
     var username: String = ""
     var meTime: Bool = false
@@ -21,6 +21,7 @@ class myDatabase{
     var sleepEnd = 0900
     var friendRequests: [String] = []
     var friends: [String] = []
+    var myFriends : [Friend] = [];
 
     init () {
         ref = Database.database().reference();
@@ -36,15 +37,15 @@ class myDatabase{
 
         ref?.child("people").observeSingleEvent(of: .value, with: { (snapshot) in
             //print(snapshot);
-            self.FriendDict = snapshot.value as? NSDictionary ;
-            //print("\(self.FriendDict as AnyObject)");
+            self.PeopleDict = snapshot.value as? NSDictionary ;
+            //print("\(self.PeopleDict as AnyObject)");
 
             // Populate ME data from firebase
             let device_id = UIDevice.current.identifierForVendor?.uuidString
             if self.IdDict[device_id] != nil {
                 self.username = self.IdDict[device_id] as! String
 
-                let myDict = self.FriendDict[self.username] as! NSDictionary
+                let myDict = self.PeopleDict[self.username] as! NSDictionary
                 if myDict["me_time"] as! Int == 1 {
                     self.meTime = false
                 } else {
@@ -67,49 +68,75 @@ class myDatabase{
         //*/
     }
 
-    func makeFriends(nameThatIcantRemember : String) -> Bool { // make friends cause i'm lonley
+    func friendRequest(newFriend : String) -> String { // make friends cause i'm lonley
 
-
-      let friendNames :[String] = FriendDict.allKeys()
-      var foundName : String;
-      for str in friendNames{
-        if str == nameThatICantRemember {
-           foundName = str
-        }
-      }
-      // if no matching names are found return false
-      if foundName.isEmpty { return false; }
-      else {
+        // Check they exist and aren't already friends, and you haven't invited them yet
+        let friendNames = PeopleDict.allKeys as! [String]
+        if !friendNames.contains(newFriend) { return "User \(newFriend) Does Not Exist"; }
+        
+        let myfriends = PeopleDict[username] as! NSDictionary
+        let myfriendsList = myfriends["friends"] as! [String]
+        if myfriendsList.contains(newFriend) { return "You Are Already Friends"; }
+        
+        
         // read array to find max index
-        let currLen = FriendDict[foundName]["friend_requested_by"].count
+        let friendsdict = PeopleDict[newFriend] as! NSDictionary
+        let req_friends_ls = friendsdict["friend_requested_by"] as! NSArray
+        if req_friends_ls.contains(username) {return "You Have Already Friend-Requested"}
+        
+        let currlen = req_friends_ls.count
         // write new Array to value
-        ref.child("people").child(foundName).child("friend_requested_by").setValue([currLen : username])
-      }
-      return true;
+        ref.child("people").child(newFriend).child("friend_requested_by").child(String(currlen)).setValue(username)
+        return "successful";
     }
 
     //accepting friends
     // retrns true if success false otherwise
     //Assume friend is a valid friend.
     func acceptFriend(name:String) -> Bool {
-      // add name to both friend lists
+        // add name to both friend lists
 
-      // add to your list
-      let currLen = FriendDict[username]["friends"].count
-      // write new Array to value
-      ref.child("people").child(friend).child(friend).setValue([currLen : username])
+        // add to your list
+        let currLen = ((PeopleDict[username] as! NSDictionary)["friends"] as!NSArray).count
+        // write new Array to value
+        ref.child("people").child(username).child("friends").child(String(currLen)).setValue(name)
 
-      // add to their list
-       currLen = FriendDict[name]["friends"].count
-      // write new Array to value
-      ref.child("people").child(name).child(friend).setValue([currLen : username])
+        // add to their list
+        let currLenFriend = ((PeopleDict[name] as! NSDictionary)["friends"] as!NSArray).count
+        // write new Array to value
+        ref.child("people").child(name).child("friends").child(String(currLenFriend)).setValue(username)
 
-      // find instance of name
-      let targ = FriendDict[name]["friends"].allKeysForObject(name)[0];
-      // remove name from pending list
-      ref.child("people").child(username).child("friend_requested_by").child(targ).removeValue()
+        // remove name from pending list
+        var ind = -1
+        let requested_ls = (PeopleDict[username] as! NSDictionary)["friend_requested_by"] as! NSArray
+        var i = 1;
+        while i < requested_ls.count {
+            if (requested_ls[i] as! String  == name ){
+                ind = i;
+                break;
+            }
+            i = i+1;
+        }
+        
+        
+        ref.child("people").child(username).child("friend_requested_by").child(String(ind)).removeValue()
 
-      return true;
+        return true;
+    }
+    
+    func friendsAvailableAtTime(time: Int) -> [String] {
+        var ppl: [String] = []
+        for (key, dict) in PeopleDict {
+            
+        }
+    }
+    
+    func populateFriends() ->Void{
+        for name in  friends {
+            let timeFree = PeopleDict ["free_hours"] as! NSDictionary
+            let meTime = PeopleDict["me_time"] as! Bool
+            myFriends.append(Friend(Name: name, TimeFree: timeFree, meTime: meTime))
+        }
     }
 
 
