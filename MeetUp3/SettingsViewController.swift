@@ -34,7 +34,8 @@ class SettingsViewController: UIViewController {
         let date2 = dateFormatter.date(from: String(format: "%04d", data.sleepEnd))
         toTime.date = date2!
 
-
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     @IBAction func saveChangesPressed(_ sender: Any) {
         // Write new values to firebase

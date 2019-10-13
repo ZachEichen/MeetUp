@@ -22,7 +22,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         myFriendsTable.delegate = self
         myFriendsTable.dataSource = self
         
-        }
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     func fetchData() {
         data.fetchAndPrint(completion: {
@@ -113,15 +119,3 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
 
 }
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-

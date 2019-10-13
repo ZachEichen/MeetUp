@@ -262,7 +262,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJq-kb-jCf">
                                 <rect key="frame" x="158" y="753" width="98" height="30"/>
-                                <state key="normal" title="Save Changes"/>
+                                <state key="normal" title="Save Changes">
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="saveChangesPressed:" destination="uea-Ft-T0C" eventType="touchUpInside" id="QfO-FE-gzG"/>
                                 </connections>
