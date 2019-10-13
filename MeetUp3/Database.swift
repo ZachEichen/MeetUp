@@ -19,6 +19,7 @@ class myDatabase{
     var meTime: Bool = false
     var sleepStart = 2300
     var sleepEnd = 0900
+    var phone = 9876543210
     var friendRequests: [String] = []
     var friends: [String] = []
     var myFriends : [Friend] = [];
@@ -55,6 +56,7 @@ class myDatabase{
                 self.sleepEnd = myDict["sleep_end"] as! Int
                 self.friendRequests = myDict["friend_requested_by"] as! [String]
                 self.friends = myDict["friends"] as! [String]
+                self.phone = myDict["phone"] as! Int
                 self.populateFriends();
                 completion?()
 
@@ -125,6 +127,21 @@ class myDatabase{
         return true;
     }
     
+    func rejectFriend(name: String) {
+        // remove name from pending list
+        var ind = -1
+        let requested_ls = (PeopleDict[username] as! NSDictionary)["friend_requested_by"] as! NSArray
+        var i = 1;
+        while i < requested_ls.count {
+            if (requested_ls[i] as! String  == name ){
+                ind = i;
+                break;
+            }
+            i = i+1;
+        }
+        ref.child("people").child(username).child("friend_requested_by").child(String(ind)).removeValue()
+    }
+    
     func friendsAvailableAtTime(deltaHours : Int, deltaMinutes : Int) -> [String] {
         // get curr time, and make day string and mil time number
         let date = Date()
@@ -168,6 +185,27 @@ class myDatabase{
         }
     }
 
+    func writeUsername(n: String) {
+        let device_id = UIDevice.current.identifierForVendor?.uuidString as! String
+        ref.child("device_id").child(device_id).setValue(n)
+        fetchAndPrint {return}
+    }
+    func writeSleepFrom(n: Int) {
+        ref.child("people").child(username).child("sleep_start").setValue(n)
+        sleepStart = n
+    }
+    func writeSleepTo(n: Int) {
+        ref.child("people").child(username).child("sleep_end").setValue(n)
+        sleepEnd = n
+    }
+    func writeMeTime(b: Bool) {
+        ref.child("people").child(username).child("me_time").setValue(b)
+        meTime = b
+    }
+    func writePhone(n: Int) {
+        ref.child("people").child(username).child("phone").setValue(n)
+        phone = n
+    }
 
     func checkVals() {
         print(self.friends)

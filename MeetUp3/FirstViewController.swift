@@ -21,6 +21,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         friendRequestTable.dataSource = self
         myFriendsTable.delegate = self
         myFriendsTable.dataSource = self
+        
         }
 
     func fetchData() {
@@ -37,7 +38,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func InviteButtonPressed(_ sender: Any) {
-        if friendInvite.text == "" {
+        if friendInvite.text == "" || friendInvite.text == "_" {
             let deviceID = UIDevice.current.identifierForVendor?.uuidString
             print(deviceID)
             fetchData()
@@ -83,7 +84,29 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == friendRequestTable {
             let friendAffermed = data.friendRequests[indexPath.row + 1]
-            data.acceptFriend(name: friendAffermed)
+            
+            // Create the alert controller
+            let alertController = UIAlertController(title: "Friend Request", message: "User \(friendAffermed) would like to be friends with you!", preferredStyle: .alert)
+
+            // Create the actions
+            let okAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                data.acceptFriend(name: friendAffermed)
+                self.fetchData()
+            }
+            let cancelAction = UIAlertAction(title: "Reject", style: UIAlertAction.Style.cancel) {
+                UIAlertAction in
+                data.rejectFriend(name: friendAffermed)
+                self.fetchData()
+            }
+
+            // Add the actions
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+
+            // Present the controller
+            self.present(alertController, animated: true, completion: nil)
+
             fetchData()
         }
     }

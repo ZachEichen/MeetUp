@@ -8,6 +8,7 @@ target 'MeetUp3' do
   # Pods for MeetUp3
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
+  pod 'Charts'
 
   target 'MeetUp3Tests' do
     inherit! :search_paths
