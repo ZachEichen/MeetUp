@@ -180,7 +180,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A40-ZL-QFN">
-                                <rect key="frame" x="212" y="379" width="182" height="216"/>
+                                <rect key="frame" x="212" y="378.5" width="182" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="592578000.21506202">
                                     <!--2019-10-12 13:00:00 +0000-->
                                 </date>
@@ -200,6 +200,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJq-kb-jCf">
+                                <rect key="frame" x="158" y="753" width="98" height="30"/>
+                                <state key="normal" title="Save Changes"/>
+                                <connections>
+                                    <action selector="saveChangesPressed:" destination="uea-Ft-T0C" eventType="touchUpInside" id="QfO-FE-gzG"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQC-6V-7O3">
                                 <rect key="frame" x="30" y="340" width="55" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -209,6 +216,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="nXk-8k-0r0" firstAttribute="bottom" secondItem="nJq-kb-jCf" secondAttribute="bottom" constant="30" id="2nc-iV-mnU"/>
                             <constraint firstItem="A40-ZL-QFN" firstAttribute="leading" secondItem="ias-TM-ueG" secondAttribute="leading" constant="-10" id="5Ji-nq-XEN"/>
                             <constraint firstItem="3P2-rn-b8W" firstAttribute="top" secondItem="h6x-MI-bjG" secondAttribute="bottom" constant="8" id="6WP-7b-XEI"/>
                             <constraint firstItem="NqH-Yr-w0u" firstAttribute="leading" secondItem="nXk-8k-0r0" secondAttribute="leading" constant="20" id="9ty-Ye-zai"/>
@@ -227,6 +235,7 @@
                             <constraint firstItem="NqH-Yr-w0u" firstAttribute="top" secondItem="3P2-rn-b8W" secondAttribute="bottom" constant="60" id="g4d-99-Kc5"/>
                             <constraint firstItem="h6x-MI-bjG" firstAttribute="top" secondItem="nXk-8k-0r0" secondAttribute="top" id="gPj-pd-0tt"/>
                             <constraint firstItem="30h-SI-twO" firstAttribute="leading" secondItem="nXk-8k-0r0" secondAttribute="leading" constant="20" id="k08-SX-IjA"/>
+                            <constraint firstItem="nJq-kb-jCf" firstAttribute="centerX" secondItem="ulc-lC-EYH" secondAttribute="centerX" id="mUA-vh-Vv5"/>
                             <constraint firstItem="3P2-rn-b8W" firstAttribute="leading" secondItem="nXk-8k-0r0" secondAttribute="leading" constant="20" id="wCI-B3-YmN"/>
                             <constraint firstItem="A40-ZL-QFN" firstAttribute="leading" secondItem="30h-SI-twO" secondAttribute="trailing" constant="10" id="xn1-HS-wre"/>
                         </constraints>

@@ -34,7 +34,11 @@ class SettingsViewController: UIViewController {
 
 
     }
-
+    @IBAction func saveChangesPressed(_ sender: Any) {
+        // Write new values to firebase
+        
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super .viewDidDisappear(animated)
         
