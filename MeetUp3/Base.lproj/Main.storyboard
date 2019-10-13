@@ -128,22 +128,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7c-cK-Ktl">
-                                <rect key="frame" x="186" y="438" width="56" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meet Up With:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8EM-Vw-3VL">
+                                <rect key="frame" x="20" y="52" width="147" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hxn-Ev-tTN">
+                                <rect key="frame" x="20" y="99" width="374" height="306"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="myCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="9zj-zv-R66">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9zj-zv-R66" id="KhH-SN-0QA">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends Available in 6h 30min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wU-vh-lBS">
+                                <rect key="frame" x="40" y="435" width="334" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="22.989999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="aw8-LZ-f0M">
+                                <rect key="frame" x="38" y="491.5" width="338" height="31"/>
+                                <color key="minimumTrackTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="maximumTrackTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="thumbTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="timeSliderChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="rtE-qX-FhX"/>
+                                    <action selector="timeSliderReleased:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="KLW-Y3-8Uf"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aw8-LZ-f0M" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="40" id="1kJ-ga-pAa"/>
+                            <constraint firstItem="7wU-vh-lBS" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="JCL-hC-YGu"/>
+                            <constraint firstItem="7wU-vh-lBS" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="40" id="K8c-4v-mBK"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="hxn-Ev-tTN" secondAttribute="trailing" constant="20" id="KLL-7l-Ups"/>
+                            <constraint firstItem="hxn-Ev-tTN" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="ck4-BE-5qb"/>
+                            <constraint firstItem="7wU-vh-lBS" firstAttribute="top" secondItem="hxn-Ev-tTN" secondAttribute="bottom" constant="30" id="gDU-ez-zyb"/>
+                            <constraint firstItem="8EM-Vw-3VL" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="kxU-DU-LEl"/>
+                            <constraint firstItem="hxn-Ev-tTN" firstAttribute="top" secondItem="8EM-Vw-3VL" secondAttribute="bottom" constant="20" id="loc-1n-fjn"/>
+                            <constraint firstItem="aw8-LZ-f0M" firstAttribute="top" secondItem="7wU-vh-lBS" secondAttribute="bottom" constant="30" id="pIb-sN-9k6"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="aw8-LZ-f0M" secondAttribute="trailing" constant="40" id="q9g-tX-ZCT"/>
+                            <constraint firstItem="8EM-Vw-3VL" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="8" id="zEr-kd-9hM"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="7wU-vh-lBS" secondAttribute="trailing" constant="40" id="zaH-QI-nJB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Meet Up" image="person.3.fill" catalog="system" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="myTableView" destination="hxn-Ev-tTN" id="bTQ-t2-Uwb"/>
+                        <outlet property="timeLabel" destination="7wU-vh-lBS" id="lah-ds-Ewl"/>
+                        <outlet property="timeSlider" destination="aw8-LZ-f0M" id="Ive-me-5eh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="749.27536231884062" y="359.59821428571428"/>
         </scene>
         <!--Settings-->
         <scene sceneID="TwX-LP-Xyc">
@@ -180,7 +228,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A40-ZL-QFN">
-                                <rect key="frame" x="212" y="378.5" width="182" height="216"/>
+                                <rect key="frame" x="212" y="379" width="182" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="592578000.21506202">
                                     <!--2019-10-12 13:00:00 +0000-->
                                 </date>
