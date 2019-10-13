@@ -23,11 +23,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         myFriendsTable.dataSource = self
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 
     func fetchData() {
@@ -89,6 +86,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == friendRequestTable {
+            print("friend request answer")
             let friendAffermed = data.friendRequests[indexPath.row + 1]
             
             // Create the alert controller
@@ -116,6 +114,4 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             fetchData()
         }
     }
-
-
 }
