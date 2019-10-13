@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import EventKit
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var friendRequestTable: UITableView!
     @IBOutlet weak var myFriendsTable: UITableView!
     @IBOutlet weak var friendInvite: UITextField!
+    
+    var eventStore = EKEventStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +34,43 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         data.fetchAndPrint(completion: {
             self.friendRequestTable.reloadData()
             self.myFriendsTable.reloadData()
+            self.checkCalendarAuthorizationStatus()
         })
     }
+    func checkCalendarAuthorizationStatus() {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+        
+        switch (status) {
+        case EKAuthorizationStatus.notDetermined:
+            // This happens on first-run
+            requestAccessToCalendar()
+            data.pushDictAtDate(daysFromNow: 0)
+            data.pushDictAtDate(daysFromNow: 1)
+            data.pushDictAtDate(daysFromNow: 2)
+            data.pushDictAtDate(daysFromNow: 3)
+
+        case EKAuthorizationStatus.authorized:
+            // Get Those Datas
+            data.pushDictAtDate(daysFromNow: 0)
+            data.pushDictAtDate(daysFromNow: 1)
+            data.pushDictAtDate(daysFromNow: 2)
+            data.pushDictAtDate(daysFromNow: 3)
+        case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+            // We need to help them give us permission
+            print("Error, needs calendar authorization")
+        }
+    }
+    func requestAccessToCalendar() {
+        EKEventStore().requestAccess(to: .event, completion: {
+            (accessGranted: Bool, error: Error?) in
+            if accessGranted == true {
+                //get those datas
+            }
+        })
+    }
+    
+
+    
     
     @IBAction func inviteButtonPressed(_ sender: Any) {
         let userID = UIDevice.current.identifierForVendor!.uuidString

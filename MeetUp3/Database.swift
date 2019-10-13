@@ -23,11 +23,14 @@ class myDatabase{
     var friendRequests: [String] = []
     var friends: [String] = []
     var myFriends : [Friend] = [];
+    
+    var myCalendarReader: CalendarReader
 
     init () {
         ref = Database.database().reference();
-        print(ref.description())
+        myCalendarReader = CalendarReader();
     }
+    
     func fetchAndPrint(completion: (() -> Void)?){
         ref?.child("device_id").observeSingleEvent(of: .value, with: { (snapshot) in
             //print(snapshot);
@@ -185,6 +188,24 @@ class myDatabase{
             myFriends.append(Friend(Name: name, TimeFree: timeFree, meTime: meTime))
         }
     }
+    
+    
+    func pushDictAtDate(daysFromNow: Int) {
+        print("Trying to get events")
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let year = 2019 //todo: please make this less sketch
+        let month = calendar.component(.month, from: date) // todo: make months wrap
+        let day = calendar.component(.day, from: date) + daysFromNow
+        let dateString = String(format: "%02d_%02d_%04d",day,month,year) // generate time String
+
+        for str in myCalendarReader.getEventsAtDate(daysFromNow: daysFromNow) {
+            ref.child("people").child(username).child("free_hours").child(dateString).child(str).setValue("busy")
+        }
+        
+    }
+
 
     func writeUsername(n: String) {
         let device_id = UIDevice.current.identifierForVendor?.uuidString as! String

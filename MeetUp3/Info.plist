@@ -70,5 +70,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSCalendarsUsageDescription</key>
+    <string>we need access to your calendar to connect you to your friends</string>
 </dict>
 </plist>

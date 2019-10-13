@@ -21,14 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
-        
-        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
-        switch (status) {
-        case EKAuthorizationStatus.notDetermined:
-            requestAc
-        }
         return true
-    }
+        }
 
     // MARK: UISceneSession Lifecycle
 
